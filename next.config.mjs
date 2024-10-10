@@ -6,6 +6,7 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
+  transpilePackages: ['react-daisyui'],
 }
 
 export default nextConfig

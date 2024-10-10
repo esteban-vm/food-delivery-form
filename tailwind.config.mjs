@@ -10,13 +10,17 @@ const tailwindConfig = {
   content: {
     extract,
     files: [
-      './node_modules/daisy-ui-react-components/**/*.{js,ts,jsx,tsx}',
+      'node_modules/daisyui/dist/**/*.js',
+      'node_modules/react-daisyui/dist/**/*.js',
       './src/(app|components|shared)/**/*.{js,ts,jsx,tsx,mdx}',
     ],
   },
   theme: {
     screens,
     fontSize,
+  },
+  daisyui: {
+    themes: ['aqua'],
   },
   plugins: [fluid, touch(), mobileHover, daisyui],
 }
