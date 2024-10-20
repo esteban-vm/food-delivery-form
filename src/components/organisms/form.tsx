@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { FaBasketShopping, FaEnvelope, FaPhone, FaUser } from 'react-icons/fa6'
 import { Card } from 'rsc-daisyui'
 import { FormButton, FormTitle } from '@/components/atoms'
-import { FormInput } from '@/components/molecules'
+import { FormInput, FormSelect } from '@/components/molecules'
 
 export default function Form() {
   const {
@@ -95,6 +95,15 @@ export default function Form() {
               required: 'Order number is required',
             })}
           />
+        </div>
+        <div className='flex w-full flex-col gap-1 md:flex-row'>
+          <FormSelect
+            $error={errors.paymentMethod}
+            $label='paymentMethod'
+            $options={['on delivery', 'online']}
+            {...register('paymentMethod')}
+          />
+          <FormSelect $label='deliveryTime' $options={[]} />
         </div>
         <FormButton />
       </Card.Body>
