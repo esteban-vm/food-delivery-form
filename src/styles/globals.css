@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-black;
+  }
+
+  * {
+    @apply font-alegreya tracking-wide selection:bg-neutral selection:text-primary;
+  }
+}
+
+@layer components {
+  .label-text,
+  .label-text-alt {
+    @apply font-semibold ~text-sm/base;
+  }
+}
