@@ -3,7 +3,7 @@ import { FormControl, Input } from 'rsc-daisyui'
 import { FormLabel } from '@/components/atoms'
 import { clsx } from '@/lib/utils'
 
-type FormInputLabel = Exclude<keyof IFoodDeliveryForm, 'paymentMethod' | 'deliveryTime'>
+type FormInputLabel = Exclude<FormLabel, 'paymentMethod' | 'deliveryTime'>
 
 interface FormInputProps extends BaseProps<typeof Input.Inside, FormInputLabel> {
   $isHalf?: boolean
