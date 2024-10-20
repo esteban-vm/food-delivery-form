@@ -9,20 +9,20 @@ import touch from 'tailwindcss-touch'
 const tailwindConfig = {
   content: {
     extract,
-    files: [
-      'node_modules/daisyui/dist/**/*.js',
-      'node_modules/react-daisyui/dist/**/*.js',
-      './src/(app|components|shared)/**/*.{js,ts,jsx,tsx,mdx}',
-    ],
+    files: ['node_modules/rsc-daisyui/dist/**/*.js', 'src/**/*.{js,ts,jsx,tsx,mdx}'],
   },
   theme: {
     screens,
     fontSize,
+    fontFamily: {
+      alegreya: 'var(--font-alegreya)',
+      pacifico: 'var(--font-pacifico)',
+    },
   },
   daisyui: {
-    themes: ['aqua'],
+    themes: ['synthwave'],
   },
-  plugins: [fluid, touch(), mobileHover, daisyui],
+  plugins: [fluid, touch(), daisyui, mobileHover],
 }
 
 export default tailwindConfig
