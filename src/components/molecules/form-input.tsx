@@ -23,6 +23,6 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   }
 )
 
-FormInput.displayName = 'FormField'
+FormInput.displayName = 'FormInput'
 
 export default FormInput
