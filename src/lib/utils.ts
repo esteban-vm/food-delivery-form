@@ -3,7 +3,7 @@ import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
 const twClsx = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
-const splitCamelCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase()
+const splitCamelCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1 $2')
 const getLastKey = (str: string) => str.substring(str.lastIndexOf('.') + 1)
 
 export { twClsx as clsx }
