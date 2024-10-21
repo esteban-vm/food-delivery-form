@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import type { ReactNode } from 'react'
 import type { FieldError } from 'react-hook-form'
 
@@ -10,16 +12,15 @@ declare global {
     paymentMethod: string
     deliveryTime: string
     address: {
+      state: string
+      city: string
       street: string
       landmark: string
-      city: string
-      state: string
     }
   }
 
   type FormLabel = RecursiveKeys<IFoodDeliveryForm>
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   type BaseProps<T extends (...args: any) => ReactNode, U extends FormLabel> = {
     $label: U
     $error?: FieldError
@@ -28,4 +29,6 @@ declare global {
 
 export {}
 
-type RecursiveKeys<T> = T extends object ? { [K in keyof T]: K | RecursiveKeys<T[K]> }[keyof T] : never
+type RecursiveKeys<T> = T extends object
+  ? { [K in keyof T]-?: K extends string | number ? `${K}` | `${K}.${RecursiveKeys<T[K]>}` : never }[keyof T]
+  : never
