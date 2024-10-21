@@ -20,6 +20,12 @@ export default function Form() {
       orderNumber: new Date().valueOf(),
       paymentMethod: '',
       deliveryTime: '',
+      address: {
+        state: '',
+        city: '',
+        street: '',
+        landmark: '',
+      },
     },
   })
 
@@ -47,8 +53,8 @@ export default function Form() {
         <>
           <FormInput
             $error={errors.name}
+            $isHalf={false}
             $label='name'
-            placeholder='John Doe'
             start={<FaUser />}
             {...register('name', {
               minLength: { value: 3, message: 'Name must be at least 3 letters long' },
@@ -59,6 +65,7 @@ export default function Form() {
 
           <FormInput
             $error={errors.email}
+            $isHalf={false}
             $label='email'
             placeholder='email@example.com'
             start={<FaEnvelope />}
@@ -81,10 +88,8 @@ export default function Form() {
           <FormInput
             $error={errors.cellphone}
             $label='cellphone'
-            placeholder='0000-000-000'
             start={<FaPhone />}
             type='tel'
-            $isHalf
             {...register('cellphone', {
               required: 'Cellphone is required',
             })}
@@ -93,9 +98,7 @@ export default function Form() {
           <FormInput
             $error={errors.orderNumber}
             $label='orderNumber'
-            placeholder='#######'
             start={<FaBasketShopping />}
-            $isHalf
             {...register('orderNumber', {
               disabled: true,
               required: 'Order number is required',
@@ -119,6 +122,42 @@ export default function Form() {
             $options={['', 'Half an Hour', '1 Hour', '2 Hours', '3 Hours']}
             {...register('deliveryTime', {
               required: 'Delivery Time is required',
+            })}
+          />
+        </FormRow>
+
+        <FormRow>
+          <FormInput
+            $error={errors.address?.state}
+            $label='address.state'
+            {...register('address.state', {
+              required: 'State is required',
+            })}
+          />
+
+          <FormInput
+            $error={errors.address?.city}
+            $label='address.city'
+            {...register('address.city', {
+              required: 'City is required',
+            })}
+          />
+        </FormRow>
+
+        <FormRow>
+          <FormInput
+            $error={errors.address?.street}
+            $label='address.street'
+            {...register('address.street', {
+              required: 'Street is required',
+            })}
+          />
+
+          <FormInput
+            $error={errors.address?.landmark}
+            $label='address.landmark'
+            {...register('address.landmark', {
+              required: 'Landmark is required',
             })}
           />
         </FormRow>

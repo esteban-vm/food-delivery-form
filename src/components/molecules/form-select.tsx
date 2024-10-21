@@ -11,17 +11,25 @@ interface FormSelectProps extends BaseProps<typeof Select, FormSelectLabel> {
 
 const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
   ({ $label, $options, $error, ...rest }, selectRef) => {
+    const labelText = getLabelText($label)
+
     return (
       <FormControl className='inline-block md:w-1/2'>
-        <FormLabel for={$label} text={getLabelText($label)} />
-        <Select {...rest} ref={selectRef} className='w-full capitalize ~text-sm/base' id={$label}>
+        <FormLabel for={labelText} text={labelText} />
+        <Select
+          {...rest}
+          ref={selectRef}
+          className='w-full capitalize ~text-sm/base'
+          color={$error && 'error'}
+          id={labelText}
+        >
           {$options.map((option, index) => (
             <option key={index} disabled={index === 0} value={option}>
               {index === 0 ? 'Select' : option}
             </option>
           ))}
         </Select>
-        <FormLabel error={$error} for={$label} />
+        <FormLabel error={$error} for={labelText} />
       </FormControl>
     )
   }

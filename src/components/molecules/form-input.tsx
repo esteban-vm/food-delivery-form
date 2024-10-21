@@ -10,12 +10,22 @@ interface FormInputProps extends BaseProps<typeof Input.Inside, FormInputLabel> 
 }
 
 const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
-  ({ $label, $error, $isHalf, type = 'text', ...rest }, inputRef) => {
+  ({ $label, $error, $isHalf = true, placeholder = '…', type = 'text', ...rest }, inputRef) => {
+    const labelText = getLabelText($label)
+
     return (
       <FormControl className={clsx($isHalf && 'inline-block md:w-1/2')}>
-        <FormLabel for={$label} text={getLabelText($label)} />
-        <Input.Inside {...rest} ref={inputRef} className='w-full' color={$error && 'error'} id={$label} type={type} />
-        <FormLabel error={$error} for={$label} />
+        <FormLabel for={labelText} text={labelText} />
+        <Input.Inside
+          {...rest}
+          ref={inputRef}
+          className='w-full'
+          color={$error && 'error'}
+          id={labelText}
+          placeholder={placeholder}
+          type={type}
+        />
+        <FormLabel error={$error} for={labelText} />
       </FormControl>
     )
   }
