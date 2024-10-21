@@ -14,11 +14,13 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
     const id = useId()
 
     return (
-      <FormControl>
-        <FormLabel id={id} text={splitCamelCase($label)} />
-        <Select {...rest} ref={selectRef} className='w-full' id={id} bordered>
+      <FormControl className='inline-block md:w-1/2'>
+        <FormLabel id={id} text={`${splitCamelCase($label)}:`} />
+        <Select {...rest} ref={selectRef} className='w-full capitalize ~text-sm/base' id={id}>
           {$options.map((option, index) => (
-            <option key={index}>{option}</option>
+            <option key={index} disabled={index === 0} value={option}>
+              {index === 0 ? 'Select' : option}
+            </option>
           ))}
         </Select>
         <FormLabel error={$error} id={id} />

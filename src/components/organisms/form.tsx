@@ -2,7 +2,7 @@ import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 import { FaBasketShopping, FaEnvelope, FaPhone, FaUser } from 'react-icons/fa6'
 import { Card } from 'rsc-daisyui'
-import { FormButton, FormTitle } from '@/components/atoms'
+import { FormButton, FormRow, FormTitle } from '@/components/atoms'
 import { FormInput, FormSelect } from '@/components/molecules'
 
 export default function Form() {
@@ -19,7 +19,7 @@ export default function Form() {
       cellphone: '',
       orderNumber: new Date().valueOf(),
       paymentMethod: '',
-      deliveryTime: 0,
+      deliveryTime: '',
     },
   })
 
@@ -43,36 +43,41 @@ export default function Form() {
     >
       <Card.Body as='fieldset'>
         <FormTitle />
-        <FormInput
-          $error={errors.name}
-          $label='name'
-          placeholder='John Doe'
-          start={<FaUser />}
-          {...register('name', {
-            minLength: { value: 3, message: 'Name must be at least 3 letters long' },
-            maxLength: { value: 30, message: 'Name must be at most 30 letters long' },
-            required: 'Name is required',
-          })}
-        />
-        <FormInput
-          $error={errors.email}
-          $label='email'
-          placeholder='email@example.com'
-          start={<FaEnvelope />}
-          type='email'
-          {...register('email', {
-            pattern: {
-              value: /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim,
-              message: 'Incorrect email format',
-            },
-            validate: {
-              notFake: (value) => value !== 'email@email.com' || 'This email address is blocked',
-              notBlackListed: (value) => !value.endsWith('example.com') || 'This domain is not supported',
-            },
-            required: 'Email is required',
-          })}
-        />
-        <div className='flex w-full flex-col gap-1 md:flex-row'>
+
+        <>
+          <FormInput
+            $error={errors.name}
+            $label='name'
+            placeholder='John Doe'
+            start={<FaUser />}
+            {...register('name', {
+              minLength: { value: 3, message: 'Name must be at least 3 letters long' },
+              maxLength: { value: 50, message: 'Name must be at most 50 letters long' },
+              required: 'Name is required',
+            })}
+          />
+
+          <FormInput
+            $error={errors.email}
+            $label='email'
+            placeholder='email@example.com'
+            start={<FaEnvelope />}
+            type='email'
+            {...register('email', {
+              pattern: {
+                value: /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim,
+                message: 'Incorrect email format',
+              },
+              validate: {
+                notFake: (value) => value !== 'email@email.com' || 'This email address is blocked',
+                notBlackListed: (value) => !value.endsWith('example.com') || 'This domain is not supported',
+              },
+              required: 'Email is required',
+            })}
+          />
+        </>
+
+        <FormRow>
           <FormInput
             $error={errors.cellphone}
             $label='cellphone'
@@ -84,6 +89,7 @@ export default function Form() {
               required: 'Cellphone is required',
             })}
           />
+
           <FormInput
             $error={errors.orderNumber}
             $label='orderNumber'
@@ -95,16 +101,27 @@ export default function Form() {
               required: 'Order number is required',
             })}
           />
-        </div>
-        <div className='flex w-full flex-col gap-1 md:flex-row'>
+        </FormRow>
+
+        <FormRow>
           <FormSelect
             $error={errors.paymentMethod}
             $label='paymentMethod'
-            $options={['on delivery', 'online']}
-            {...register('paymentMethod')}
+            $options={['', 'on delivery', 'online']}
+            {...register('paymentMethod', {
+              required: 'Payment Method is required',
+            })}
           />
-          <FormSelect $label='deliveryTime' $options={[]} />
-        </div>
+
+          <FormSelect
+            $error={errors.deliveryTime}
+            $label='deliveryTime'
+            $options={['', 'Half an Hour', '1 Hour', '2 Hours', '3 Hours']}
+            {...register('deliveryTime', {
+              required: 'Delivery Time is required',
+            })}
+          />
+        </FormRow>
         <FormButton />
       </Card.Body>
     </Card>
