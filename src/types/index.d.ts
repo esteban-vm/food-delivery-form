@@ -9,9 +9,15 @@ declare global {
     orderNumber: number
     paymentMethod: string
     deliveryTime: string
+    address: {
+      street: string
+      landmark: string
+      city: string
+      state: string
+    }
   }
 
-  type FormLabel = keyof IFoodDeliveryForm
+  type FormLabel = RecursiveKeys<IFoodDeliveryForm>
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   type BaseProps<T extends (...args: any) => ReactNode, U extends FormLabel> = {
@@ -21,3 +27,5 @@ declare global {
 }
 
 export {}
+
+type RecursiveKeys<T> = T extends object ? { [K in keyof T]: K | RecursiveKeys<T[K]> }[keyof T] : never
