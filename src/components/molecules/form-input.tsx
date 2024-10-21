@@ -1,9 +1,9 @@
 import { forwardRef, useId } from 'react'
 import { FormControl, Input } from 'rsc-daisyui'
 import { FormLabel } from '@/components/atoms'
-import { clsx } from '@/lib/utils'
+import { clsx, getLabelText } from '@/lib/utils'
 
-type FormInputLabel = Exclude<FormLabel, 'paymentMethod' | 'deliveryTime'>
+type FormInputLabel = Exclude<FormLabel, 'paymentMethod' | 'deliveryTime' | 'address'>
 
 interface FormInputProps extends BaseProps<typeof Input.Inside, FormInputLabel> {
   $isHalf?: boolean
@@ -15,7 +15,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
 
     return (
       <FormControl className={clsx($isHalf && 'inline-block md:w-1/2')}>
-        <FormLabel id={id} text={`${$label !== 'orderNumber' ? `your ${$label}` : `Order no.`}:`} />
+        <FormLabel id={id} text={getLabelText($label)} />
         <Input.Inside {...rest} ref={inputRef} className='w-full' color={$error && 'error'} id={id} type={type} />
         <FormLabel error={$error} id={id} />
       </FormControl>

@@ -1,7 +1,7 @@
 import { forwardRef, useId } from 'react'
 import { FormControl, Select } from 'rsc-daisyui'
 import { FormLabel } from '@/components/atoms'
-import { splitCamelCase } from '@/lib/utils'
+import { getLabelText } from '@/lib/utils'
 
 type FormSelectLabel = Extract<FormLabel, 'paymentMethod' | 'deliveryTime'>
 
@@ -15,7 +15,7 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
 
     return (
       <FormControl className='inline-block md:w-1/2'>
-        <FormLabel id={id} text={`${splitCamelCase($label)}:`} />
+        <FormLabel id={id} text={getLabelText($label)} />
         <Select {...rest} ref={selectRef} className='w-full capitalize ~text-sm/base' id={id}>
           {$options.map((option, index) => (
             <option key={index} disabled={index === 0} value={option}>
