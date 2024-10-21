@@ -8,7 +8,7 @@ declare global {
     cellphone: string
     orderNumber: number
     paymentMethod: string
-    deliveryTime: number
+    deliveryTime: string
   }
 
   type FormLabel = keyof IFoodDeliveryForm
