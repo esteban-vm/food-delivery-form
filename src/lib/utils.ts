@@ -26,7 +26,7 @@ export const getLabelText = (label: FormLabel) => {
       labelText = `your ${label}:`
       break
     default:
-      labelText = label
+      labelText = `${label.substring(label.lastIndexOf('.') + 1)}:`
       break
   }
 
