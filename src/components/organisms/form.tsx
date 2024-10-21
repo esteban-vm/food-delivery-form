@@ -14,13 +14,20 @@ export default function Form() {
     mode: 'onChange',
     delayError: 2_000,
     defaultValues: {
-      name: '',
-      email: '',
-      cellphone: '',
       orderNumber: new Date().valueOf(),
-      paymentMethod: '',
-      deliveryTime: '',
-      address: {
+
+      customerDetails: {
+        name: '',
+        email: '',
+        cellphone: '',
+      },
+
+      checkoutDetails: {
+        paymentMethod: '',
+        deliveryTime: '',
+      },
+
+      deliveryAddress: {
         state: '',
         city: '',
         street: '',
@@ -52,11 +59,11 @@ export default function Form() {
 
         <>
           <FormInput
-            $error={errors.name}
+            $error={errors.customerDetails?.name}
             $isHalf={false}
-            $label='name'
+            $label='customerDetails.name'
             start={<FaUser />}
-            {...register('name', {
+            {...register('customerDetails.name', {
               minLength: { value: 3, message: 'Name must be at least 3 letters long' },
               maxLength: { value: 50, message: 'Name must be at most 50 letters long' },
               required: 'Name is required',
@@ -64,13 +71,13 @@ export default function Form() {
           />
 
           <FormInput
-            $error={errors.email}
+            $error={errors.customerDetails?.email}
             $isHalf={false}
-            $label='email'
+            $label='customerDetails.email'
             placeholder='email@example.com'
             start={<FaEnvelope />}
             type='email'
-            {...register('email', {
+            {...register('customerDetails.email', {
               pattern: {
                 value: /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim,
                 message: 'Incorrect email format',
@@ -86,11 +93,11 @@ export default function Form() {
 
         <FormRow>
           <FormInput
-            $error={errors.cellphone}
-            $label='cellphone'
+            $error={errors.customerDetails?.cellphone}
+            $label='customerDetails.cellphone'
             start={<FaPhone />}
             type='tel'
-            {...register('cellphone', {
+            {...register('customerDetails.cellphone', {
               required: 'Cellphone is required',
             })}
           />
@@ -108,19 +115,19 @@ export default function Form() {
 
         <FormRow>
           <FormSelect
-            $error={errors.paymentMethod}
-            $label='paymentMethod'
+            $error={errors.checkoutDetails?.paymentMethod}
+            $label='checkoutDetails.paymentMethod'
             $options={['', 'on delivery', 'online']}
-            {...register('paymentMethod', {
+            {...register('checkoutDetails.paymentMethod', {
               required: 'Payment Method is required',
             })}
           />
 
           <FormSelect
-            $error={errors.deliveryTime}
-            $label='deliveryTime'
+            $error={errors.checkoutDetails?.deliveryTime}
+            $label='checkoutDetails.deliveryTime'
             $options={['', 'Half an Hour', '1 Hour', '2 Hours', '3 Hours']}
-            {...register('deliveryTime', {
+            {...register('checkoutDetails.deliveryTime', {
               required: 'Delivery Time is required',
             })}
           />
@@ -128,17 +135,17 @@ export default function Form() {
 
         <FormRow>
           <FormInput
-            $error={errors.address?.state}
-            $label='address.state'
-            {...register('address.state', {
+            $error={errors.deliveryAddress?.state}
+            $label='deliveryAddress.state'
+            {...register('deliveryAddress.state', {
               required: 'State is required',
             })}
           />
 
           <FormInput
-            $error={errors.address?.city}
-            $label='address.city'
-            {...register('address.city', {
+            $error={errors.deliveryAddress?.city}
+            $label='deliveryAddress.city'
+            {...register('deliveryAddress.city', {
               required: 'City is required',
             })}
           />
@@ -146,17 +153,17 @@ export default function Form() {
 
         <FormRow>
           <FormInput
-            $error={errors.address?.street}
-            $label='address.street'
-            {...register('address.street', {
+            $error={errors.deliveryAddress?.street}
+            $label='deliveryAddress.street'
+            {...register('deliveryAddress.street', {
               required: 'Street is required',
             })}
           />
 
           <FormInput
-            $error={errors.address?.landmark}
-            $label='address.landmark'
-            {...register('address.landmark', {
+            $error={errors.deliveryAddress?.landmark}
+            $label='deliveryAddress.landmark'
+            {...register('deliveryAddress.landmark', {
               required: 'Landmark is required',
             })}
           />

@@ -3,9 +3,7 @@ import { FormControl, Select } from 'rsc-daisyui'
 import { FormLabel } from '@/components/atoms'
 import { getLabelText } from '@/lib/utils'
 
-type FormSelectLabel = Extract<FormLabel, 'paymentMethod' | 'deliveryTime'>
-
-interface FormSelectProps extends BaseProps<typeof Select, FormSelectLabel> {
+interface FormSelectProps extends BaseProps<typeof Select> {
   $options: string[]
 }
 

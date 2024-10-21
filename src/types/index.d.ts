@@ -5,13 +5,20 @@ import type { FieldError } from 'react-hook-form'
 
 declare global {
   interface IFoodDeliveryForm {
-    name: string
-    email: string
-    cellphone: string
     orderNumber: number
-    paymentMethod: string
-    deliveryTime: string
-    address: {
+
+    customerDetails: {
+      name: string
+      email: string
+      cellphone: string
+    }
+
+    checkoutDetails: {
+      paymentMethod: string
+      deliveryTime: string
+    }
+
+    deliveryAddress: {
       state: string
       city: string
       street: string
@@ -21,8 +28,8 @@ declare global {
 
   type FormLabel = RecursiveKeys<IFoodDeliveryForm>
 
-  type BaseProps<T extends (...args: any) => ReactNode, U extends FormLabel> = {
-    $label: U
+  type BaseProps<T extends (...args: any) => ReactNode> = {
+    $label: FormLabel
     $error?: FieldError
   } & Omit<Parameters<T>[number], 'id' | 'className' | 'color' | 'ref'>
 }
