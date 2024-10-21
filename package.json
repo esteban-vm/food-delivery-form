@@ -1,5 +1,5 @@
 {
-  "name": "example-app",
+  "name": "food-delivery-form",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -65,3 +65,4 @@
     "vitest": "^1.6.0"
   }
 }
+
