@@ -1,6 +1,6 @@
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form'
 import { FormProvider, useForm } from 'react-hook-form'
-import { FaBasketShopping } from 'react-icons/fa6'
+import { FaHashtag } from 'react-icons/fa6'
 import { Card } from 'rsc-daisyui'
 import { FormButton, FormTitle } from '@/components/atoms'
 import { FormInput } from '@/components/molecules'
@@ -63,7 +63,7 @@ export default function Form() {
           $error={errors.orderNumber}
           $isHalf={false}
           $label='orderNumber'
-          start={<FaBasketShopping />}
+          start={<FaHashtag />}
           {...register('orderNumber', {
             disabled: true,
             required: 'Order number is required',
