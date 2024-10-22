@@ -36,10 +36,11 @@ export default function Form() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = methods
 
-  const onSubmit: SubmitHandler<IFoodDeliveryForm> = (data) => {
+  const onSubmit: SubmitHandler<IFoodDeliveryForm> = async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 3_000))
     console.log(data)
   }
 
@@ -74,7 +75,7 @@ export default function Form() {
           <CheckoutForm />
           <DeliveryForm />
         </FormProvider>
-        <FormButton />
+        <FormButton disabled={isSubmitting} />
       </Card.Body>
     </Card>
   )
