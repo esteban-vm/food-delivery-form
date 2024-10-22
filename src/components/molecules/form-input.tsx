@@ -21,6 +21,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           color={$error && 'error'}
           id={labelText}
           placeholder={placeholder}
+          size='sm'
           type={type}
         />
         <FormLabel error={$error} for={labelText} />

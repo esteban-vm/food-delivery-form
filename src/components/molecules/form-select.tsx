@@ -17,9 +17,10 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
         <Select
           {...rest}
           ref={selectRef}
-          className='w-full capitalize ~text-sm/base'
+          className='w-full capitalize'
           color={$error && 'error'}
           id={labelText}
+          size='sm'
         >
           {$options.map((option, index) => (
             <option key={index} disabled={index === 0} value={option}>
