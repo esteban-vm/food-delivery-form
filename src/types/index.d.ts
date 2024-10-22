@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import type { FieldError } from 'react-hook-form'
 
 declare global {
-  interface ICustomerDetails {
+  interface ICustomerDetailsForm {
     customerDetails: {
       name: string
       email: string
@@ -12,14 +12,14 @@ declare global {
     }
   }
 
-  interface ICheckoutDetails {
+  interface ICheckoutDetailsForm {
     checkoutDetails: {
       paymentMethod: string
       deliveryTime: string
     }
   }
 
-  interface IDeliveryAddress {
+  interface IDeliveryAddressForm {
     deliveryAddress: {
       state: string
       city: string
@@ -28,7 +28,7 @@ declare global {
     }
   }
 
-  interface IFoodDeliveryForm extends ICustomerDetails, ICheckoutDetails, IDeliveryAddress {
+  interface IFoodDeliveryForm extends ICustomerDetailsForm, ICheckoutDetailsForm, IDeliveryAddressForm {
     orderNumber: number
   }
 

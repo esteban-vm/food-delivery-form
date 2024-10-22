@@ -1,12 +1,10 @@
-import { useFormContext } from 'react-hook-form'
+import { useFormContext, useFormState } from 'react-hook-form'
 import { FormRow } from '@/components/atoms'
 import { FormSelect } from '@/components/molecules'
 
 export default function CheckoutForm() {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext<ICheckoutDetails>()
+  const { register } = useFormContext<ICheckoutDetailsForm>()
+  const { errors } = useFormState<ICheckoutDetailsForm>({ name: 'checkoutDetails' })
 
   return (
     <FormRow>
