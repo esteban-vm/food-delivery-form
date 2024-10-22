@@ -11,7 +11,7 @@ export default function FormLabel({ for: id, text, error }: FormLabelProps) {
   if (!text && !error) return null
 
   return (
-    <Label htmlFor={id}>
+    <Label className='py-1' htmlFor={id}>
       {error ? (
         <Label.TextAlt as='small' className='text-error'>
           {error.message}
