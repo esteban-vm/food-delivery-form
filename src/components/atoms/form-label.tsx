@@ -2,7 +2,7 @@ import type { FieldError } from 'react-hook-form'
 import { Label } from 'rsc-daisyui'
 
 interface FormLabelProps {
-  for: string
+  for: FormLabel
   text?: string
   error?: FieldError
 }
