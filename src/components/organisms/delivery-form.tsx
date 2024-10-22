@@ -6,7 +6,7 @@ export default function DeliveryForm() {
   const {
     register,
     formState: { errors },
-  } = useFormContext<IDeliveryAddress>()
+  } = useFormContext<IDeliveryAddressForm>()
 
   return (
     <>

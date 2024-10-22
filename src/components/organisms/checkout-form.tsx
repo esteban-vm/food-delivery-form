@@ -6,7 +6,7 @@ export default function CheckoutForm() {
   const {
     register,
     formState: { errors },
-  } = useFormContext<ICheckoutDetails>()
+  } = useFormContext<ICheckoutDetailsForm>()
 
   return (
     <FormRow>
