@@ -1,12 +1,10 @@
-import { useFormContext } from 'react-hook-form'
+import { useFormContext, useFormState } from 'react-hook-form'
 import { FormRow } from '@/components/atoms'
 import { FormInput } from '@/components/molecules'
 
 export default function DeliveryForm() {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext<IDeliveryAddressForm>()
+  const { register } = useFormContext<IDeliveryAddressForm>()
+  const { errors } = useFormState<IDeliveryAddressForm>({ name: 'deliveryAddress' })
 
   return (
     <>

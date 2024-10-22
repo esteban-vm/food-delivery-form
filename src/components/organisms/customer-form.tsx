@@ -1,13 +1,11 @@
-import { useFormContext } from 'react-hook-form'
+import { useFormContext, useFormState } from 'react-hook-form'
 import { FaEnvelope, FaPhone, FaUser } from 'react-icons/fa6'
 import { FormRow } from '@/components/atoms'
 import { FormInput } from '@/components/molecules'
 
 export default function CustomerForm() {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext<ICustomerDetails>()
+  const { register } = useFormContext<ICustomerDetailsForm>()
+  const { errors } = useFormState<ICustomerDetailsForm>({ name: 'customerDetails' })
 
   return (
     <>
