@@ -1,4 +1,4 @@
-import { FaPaperPlane } from 'react-icons/fa6'
+import { FaTruckFast } from 'react-icons/fa6'
 import { Button, FormControl } from 'rsc-daisyui'
 
 interface FormButtonProps {
@@ -10,13 +10,13 @@ export default function FormButton(props: FormButtonProps) {
     <FormControl className='mt-4'>
       <Button
         {...props}
-        className='mx-auto w-full max-w-sm font-pacifico font-extralight text-white'
+        className='mx-auto w-full max-w-sm font-semibold italic text-white'
         color='primary'
         size='sm'
         type='submit'
       >
-        <FaPaperPlane />
         Order Now!
+        <FaTruckFast />
       </Button>
     </FormControl>
   )
