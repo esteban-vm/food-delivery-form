@@ -3,9 +3,7 @@ import { FormControl, Select } from 'rsc-daisyui'
 import { FormLabel } from '@/components/atoms'
 import { getLabelText } from '@/lib/utils'
 
-type FormSelectLabel = Extract<FormLabel, 'paymentMethod' | 'deliveryTime'>
-
-interface FormSelectProps extends BaseProps<typeof Select, FormSelectLabel> {
+interface FormSelectProps extends BaseProps<typeof Select> {
   $options: string[]
 }
 
@@ -19,9 +17,10 @@ const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
         <Select
           {...rest}
           ref={selectRef}
-          className='w-full capitalize ~text-sm/base'
+          className='w-full capitalize'
           color={$error && 'error'}
           id={labelText}
+          size='sm'
         >
           {$options.map((option, index) => (
             <option key={index} disabled={index === 0} value={option}>

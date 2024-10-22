@@ -3,9 +3,7 @@ import { FormControl, Input } from 'rsc-daisyui'
 import { FormLabel } from '@/components/atoms'
 import { clsx, getLabelText } from '@/lib/utils'
 
-type FormInputLabel = Exclude<FormLabel, 'paymentMethod' | 'deliveryTime' | 'address'>
-
-interface FormInputProps extends BaseProps<typeof Input.Inside, FormInputLabel> {
+interface FormInputProps extends BaseProps<typeof Input.Inside> {
   $isHalf?: boolean
 }
 
@@ -23,6 +21,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           color={$error && 'error'}
           id={labelText}
           placeholder={placeholder}
+          size='sm'
           type={type}
         />
         <FormLabel error={$error} for={labelText} />

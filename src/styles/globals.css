@@ -16,6 +16,6 @@
 @layer components {
   .label-text,
   .label-text-alt {
-    @apply font-semibold ~text-sm/base;
+    @apply font-semibold;
   }
 }

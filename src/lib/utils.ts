@@ -12,24 +12,31 @@ export const getLabelText = (label: FormLabel) => {
   let labelText = ''
 
   switch (label) {
-    case 'address':
-      break
-    case 'deliveryTime':
-    case 'paymentMethod':
-      labelText = `${splitCamelCase(label)}:`
+    case 'customerDetails':
+    case 'checkoutDetails':
+    case 'deliveryAddress':
       break
     case 'orderNumber':
-      labelText = 'Order no.'
+      labelText = 'Order No.'
       break
-    case 'cellphone':
-    case 'email':
-    case 'name':
-      labelText = `your ${label}:`
+    case 'customerDetails.name':
+    case 'customerDetails.email':
+    case 'customerDetails.cellphone':
+      labelText = `Your ${getLastKey(label)}`
       break
-    default:
-      labelText = `${getLastKey(label)}:`
+    case 'checkoutDetails.paymentMethod':
+    case 'checkoutDetails.deliveryTime':
+      labelText = splitCamelCase(getLastKey(label))
+      break
+    case 'deliveryAddress.state':
+    case 'deliveryAddress.city':
+    case 'deliveryAddress.street':
+    case 'deliveryAddress.landmark':
+      labelText = getLastKey(label)
       break
   }
+
+  labelText += ':'
 
   return labelText
 }
