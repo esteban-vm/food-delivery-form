@@ -7,10 +7,10 @@ interface FormButtonProps {
 
 export default function FormButton(props: FormButtonProps) {
   return (
-    <FormControl className='mt-4'>
+    <FormControl className='pointer-events-none mt-4'>
       <Button
         {...props}
-        className='mx-auto w-full max-w-sm font-semibold italic text-white'
+        className='pointer-events-auto mx-auto w-full max-w-sm font-semibold italic text-white'
         color='primary'
         size='sm'
         type='submit'
