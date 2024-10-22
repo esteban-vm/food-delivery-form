@@ -1,6 +1,5 @@
-import { forwardRef } from 'react'
+import { forwardRef, useId } from 'react'
 import { FormControl, Select } from 'rsc-daisyui'
-import uniqid from 'uniqid'
 import { FormLabel } from '@/components/atoms'
 import { getLabelText } from '@/lib/utils'
 
@@ -10,7 +9,7 @@ interface FormSelectProps extends BaseProps<typeof Select> {
 
 const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
   ({ $label, $options, $error, ...rest }, selectRef) => {
-    const id = uniqid()
+    const id = useId()
 
     return (
       <FormControl className='inline-block md:w-1/2'>

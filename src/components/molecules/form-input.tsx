@@ -1,6 +1,5 @@
-import { forwardRef } from 'react'
+import { forwardRef, useId } from 'react'
 import { FormControl, Input } from 'rsc-daisyui'
-import uniqid from 'uniqid'
 import { FormLabel } from '@/components/atoms'
 import { clsx, getLabelText } from '@/lib/utils'
 
@@ -10,7 +9,7 @@ interface FormInputProps extends BaseProps<typeof Input.Inside> {
 
 const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   ({ $label, $error, $isHalf = true, placeholder = '…', type = 'text', ...rest }, inputRef) => {
-    const id = uniqid()
+    const id = useId()
 
     return (
       <FormControl className={clsx($isHalf && 'inline-block md:w-1/2')}>
