@@ -9,7 +9,11 @@
   }
 
   * {
-    @apply font-alegreya tracking-wide selection:bg-neutral selection:text-primary;
+    @apply font-alegreya tracking-wide selection:bg-primary selection:text-neutral;
+  }
+
+  input {
+    @apply placeholder:select-none;
   }
 }
 
