@@ -8,10 +8,10 @@ const getLastKey = (str: string) => str.substring(str.lastIndexOf('.') + 1)
 
 export { twClsx as clsx }
 
-export const getLabelText = (str: FormLabel) => {
+export const getLabelText = (name: FieldName) => {
   let labelText = ''
 
-  switch (str) {
+  switch (name) {
     case 'customerDetails':
     case 'checkoutDetails':
     case 'deliveryAddress':
@@ -22,17 +22,17 @@ export const getLabelText = (str: FormLabel) => {
     case 'customerDetails.name':
     case 'customerDetails.email':
     case 'customerDetails.cellphone':
-      labelText = `Your ${getLastKey(str)}`
+      labelText = `Your ${getLastKey(name)}`
       break
     case 'checkoutDetails.paymentMethod':
     case 'checkoutDetails.deliveryTime':
-      labelText = splitCamelCase(getLastKey(str))
+      labelText = splitCamelCase(getLastKey(name))
       break
     case 'deliveryAddress.state':
     case 'deliveryAddress.city':
     case 'deliveryAddress.street':
     case 'deliveryAddress.landmark':
-      labelText = getLastKey(str)
+      labelText = getLastKey(name)
       break
   }
 
