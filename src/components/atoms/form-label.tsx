@@ -1,10 +1,8 @@
-import type { FieldError } from 'react-hook-form'
 import { Label } from 'rsc-daisyui'
 
-interface FormLabelProps {
+interface FormLabelProps extends PropsWithError {
   for: FormLabel
   text?: string
-  error?: FieldError
 }
 
 export default function FormLabel({ for: id, text, error }: FormLabelProps) {

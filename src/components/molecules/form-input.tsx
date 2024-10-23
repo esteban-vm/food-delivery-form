@@ -4,25 +4,26 @@ import { FormLabel } from '@/components/atoms'
 import { clsx, getLabelText } from '@/lib/utils'
 
 interface FormInputProps extends BaseProps<typeof Input.Inside> {
-  $isHalf?: boolean
+  isHalf?: boolean
 }
 
 const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
-  ({ $label, $error, $isHalf = true, placeholder = '…', type = 'text', ...rest }, inputRef) => {
+  ({ isHalf = true, error, name, placeholder = '…', type = 'text', ...rest }, ref) => {
     return (
-      <FormControl className={clsx($isHalf && 'inline-block md:w-1/2')}>
-        <FormLabel for={$label} text={getLabelText($label)} />
+      <FormControl className={clsx(isHalf && 'inline-block md:w-1/2')}>
+        <FormLabel for={name} text={getLabelText(name)} />
         <Input.Inside
           {...rest}
-          ref={inputRef}
+          ref={ref}
           className='w-full'
-          color={$error && 'error'}
-          id={$label}
+          color={error && 'error'}
+          id={name}
+          name={name}
           placeholder={placeholder}
           size='sm'
           type={type}
         />
-        <FormLabel error={$error} for={$label} />
+        <FormLabel error={error} for={name} />
       </FormControl>
     )
   }

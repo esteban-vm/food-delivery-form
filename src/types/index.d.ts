@@ -32,12 +32,16 @@ declare global {
     orderNumber: number
   }
 
+  interface PropsWithError {
+    error?: FieldError
+  }
+
   type FormLabel = RecursiveKeys<IFoodDeliveryForm>
 
   type BaseProps<T extends (...args: any) => ReactNode> = {
-    $label: FormLabel
-    $error?: FieldError
-  } & Omit<Parameters<T>[number], 'id' | 'className' | 'color' | 'ref' | 'size'>
+    name: FormLabel
+  } & PropsWithError &
+    Omit<Parameters<T>[number], 'id' | 'className' | 'color' | 'ref' | 'size'>
 }
 
 export {}

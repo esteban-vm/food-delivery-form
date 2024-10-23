@@ -6,7 +6,7 @@ import formImg from '@/images/form.jpg'
 
 export default function Home() {
   return (
-    <Hero className='relative min-h-full w-screen'>
+    <Hero as='header' className='relative min-h-full w-screen'>
       <Image alt='' className='object-cover' src={backgroundImg} fill />
       <Hero.Overlay className='z-10 bg-neutral/90' />
       <Hero.Content className='z-20 flex-col md:flex-row'>

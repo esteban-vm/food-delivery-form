@@ -12,18 +12,15 @@ export default function Form() {
     delayError: 2_000,
     defaultValues: {
       orderNumber: new Date().valueOf(),
-
       customerDetails: {
         name: '',
         email: '',
         cellphone: '',
       },
-
       checkoutDetails: {
         paymentMethod: '',
         deliveryTime: '',
       },
-
       deliveryAddress: {
         state: '',
         city: '',
@@ -34,9 +31,10 @@ export default function Form() {
   })
 
   const {
+    control,
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = methods
 
   const onSubmit: SubmitHandler<IFoodDeliveryForm> = async (data) => {
@@ -61,9 +59,8 @@ export default function Form() {
       <Card.Body as='fieldset'>
         <FormTitle />
         <FormInput
-          $error={errors.orderNumber}
-          $isHalf={false}
-          $label='orderNumber'
+          error={errors.orderNumber}
+          isHalf={false}
           start={<FaHashtag />}
           {...register('orderNumber', {
             disabled: true,
@@ -75,7 +72,7 @@ export default function Form() {
           <CheckoutForm />
           <DeliveryForm />
         </FormProvider>
-        <FormButton disabled={isSubmitting} />
+        <FormButton control={control} />
       </Card.Body>
     </Card>
   )

@@ -10,9 +10,8 @@ export default function CustomerForm() {
   return (
     <>
       <FormInput
-        $error={errors.customerDetails?.name}
-        $isHalf={false}
-        $label='customerDetails.name'
+        error={errors.customerDetails?.name}
+        isHalf={false}
         start={<FaUser />}
         {...register('customerDetails.name', {
           minLength: { value: 3, message: 'Name must be at least 3 letters long' },
@@ -22,8 +21,7 @@ export default function CustomerForm() {
       />
       <FormRow>
         <FormInput
-          $error={errors.customerDetails?.email}
-          $label='customerDetails.email'
+          error={errors.customerDetails?.email}
           placeholder='email@example.com'
           start={<FaEnvelope />}
           type='email'
@@ -40,8 +38,7 @@ export default function CustomerForm() {
           })}
         />
         <FormInput
-          $error={errors.customerDetails?.cellphone}
-          $label='customerDetails.cellphone'
+          error={errors.customerDetails?.cellphone}
           start={<FaPhone />}
           type='tel'
           {...register('customerDetails.cellphone', {
