@@ -10,15 +10,13 @@ export default function DeliveryForm() {
     <>
       <FormRow>
         <FormInput
-          $error={errors.deliveryAddress?.state}
-          $label='deliveryAddress.state'
+          error={errors.deliveryAddress?.state}
           {...register('deliveryAddress.state', {
             required: 'State is required',
           })}
         />
         <FormInput
-          $error={errors.deliveryAddress?.city}
-          $label='deliveryAddress.city'
+          error={errors.deliveryAddress?.city}
           {...register('deliveryAddress.city', {
             required: 'City is required',
           })}
@@ -26,15 +24,13 @@ export default function DeliveryForm() {
       </FormRow>
       <FormRow>
         <FormInput
-          $error={errors.deliveryAddress?.street}
-          $label='deliveryAddress.street'
+          error={errors.deliveryAddress?.street}
           {...register('deliveryAddress.street', {
             required: 'Street is required',
           })}
         />
         <FormInput
-          $error={errors.deliveryAddress?.landmark}
-          $label='deliveryAddress.landmark'
+          error={errors.deliveryAddress?.landmark}
           {...register('deliveryAddress.landmark', {
             required: 'Landmark is required',
           })}

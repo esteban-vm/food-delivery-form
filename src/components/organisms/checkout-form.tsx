@@ -9,17 +9,15 @@ export default function CheckoutForm() {
   return (
     <FormRow>
       <FormSelect
-        $error={errors.checkoutDetails?.paymentMethod}
-        $label='checkoutDetails.paymentMethod'
-        $options={['', 'on delivery', 'online']}
+        error={errors.checkoutDetails?.paymentMethod}
+        options={['', 'on delivery', 'online']}
         {...register('checkoutDetails.paymentMethod', {
           required: 'Payment Method is required',
         })}
       />
       <FormSelect
-        $error={errors.checkoutDetails?.deliveryTime}
-        $label='checkoutDetails.deliveryTime'
-        $options={['', 'Half an Hour', '1 Hour', '2 Hours', '3 Hours']}
+        error={errors.checkoutDetails?.deliveryTime}
+        options={['', 'Half an Hour', '1 Hour', '2 Hours', '3 Hours']}
         {...register('checkoutDetails.deliveryTime', {
           required: 'Delivery Time is required',
         })}
