@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { ReactNode } from 'react'
-import type { FieldError } from 'react-hook-form'
+import type { FieldError, FieldPath } from 'react-hook-form'
 
 declare global {
   interface ICustomerDetailsForm {
@@ -36,16 +36,10 @@ declare global {
     error?: FieldError
   }
 
-  type FieldName = RecursiveKeys<IFoodDeliveryForm>
+  type FieldName = FieldPath<IFoodDeliveryForm>
 
-  type BaseProps<T extends (...args: any) => ReactNode> = {
-    name: FieldName
-  } & PropsWithError &
+  type BaseProps<T extends (...args: any) => ReactNode> = { name: FieldName } & PropsWithError &
     Omit<Parameters<T>[number], 'id' | 'className' | 'color' | 'ref' | 'size'>
 }
 
 export {}
-
-type RecursiveKeys<T> = T extends object
-  ? { [K in keyof T]-?: K extends string | number ? `${K}` | `${K}.${RecursiveKeys<T[K]>}` : never }[keyof T]
-  : never

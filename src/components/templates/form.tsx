@@ -62,8 +62,8 @@ export default function Form() {
           error={errors.orderNumber}
           isHalf={false}
           start={<FaHashtag />}
+          disabled
           {...register('orderNumber', {
-            disabled: true,
             required: 'Order number is required',
           })}
         />
