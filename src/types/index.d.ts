@@ -36,10 +36,10 @@ declare global {
     error?: FieldError
   }
 
-  type FormLabel = RecursiveKeys<IFoodDeliveryForm>
+  type FieldName = RecursiveKeys<IFoodDeliveryForm>
 
   type BaseProps<T extends (...args: any) => ReactNode> = {
-    name: FormLabel
+    name: FieldName
   } & PropsWithError &
     Omit<Parameters<T>[number], 'id' | 'className' | 'color' | 'ref' | 'size'>
 }
