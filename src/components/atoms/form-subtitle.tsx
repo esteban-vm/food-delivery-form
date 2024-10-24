@@ -8,8 +8,8 @@ interface FormSubtitleProps {
 
 export default function FormSubtitle({ text, isInvalid }: FormSubtitleProps) {
   return (
-    <h2 className='flex items-end justify-between ~text-lg/xl'>
-      <span className='font-pacifico capitalize text-primary'>{splitCamelCase(text)}</span>
+    <h2 className='flex cursor-default items-end justify-between ~text-lg/xl'>
+      <span className='font-pacifico capitalize text-primary'>{splitCamelCase(text)}:</span>
       {isInvalid && <FaTriangleExclamation className='text-error motion-safe:animate-pulse' />}
     </h2>
   )

@@ -18,7 +18,7 @@
     }
 
     section {
-      @apply size-full py-2;
+      @apply mt-2 size-full;
     }
   }
 }

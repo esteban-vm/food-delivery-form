@@ -9,13 +9,13 @@ interface FormSelectProps extends BaseProps<typeof Select> {
 
 const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(({ options, error, name, ...rest }, ref) => {
   return (
-    <FormControl className='inline-block md:w-1/2'>
+    <FormControl className='mt-1 inline-block md:w-1/2'>
       <FormLabel for={name} text={getLabelText(name)} />
       <Select
         {...rest}
         ref={ref}
         className='w-full capitalize'
-        color={error && 'error'}
+        color={error ? 'error' : 'primary'}
         id={name}
         name={name}
         size='sm'
