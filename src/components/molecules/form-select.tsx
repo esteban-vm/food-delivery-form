@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { FormControl, Select } from 'rsc-daisyui'
 import { FormLabel } from '@/components/atoms'
-import { getLabelText } from '@/lib/utils'
+import { formatFieldName } from '@/lib/utils'
 
 interface FormSelectProps extends BaseProps<typeof Select> {
   options: string[]
@@ -10,7 +10,7 @@ interface FormSelectProps extends BaseProps<typeof Select> {
 const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(({ options, error, name, ...rest }, ref) => {
   return (
     <FormControl className='mt-1 inline-block md:w-1/2'>
-      <FormLabel for={name} text={getLabelText(name)} />
+      <FormLabel for={name} text={formatFieldName(name)} />
       <Select
         {...rest}
         ref={ref}

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { FormControl, Input } from 'rsc-daisyui'
 import { FormLabel } from '@/components/atoms'
-import { clsx, getLabelText } from '@/lib/utils'
+import { clsx, formatFieldName } from '@/lib/utils'
 
 interface FormInputProps extends BaseProps<typeof Input.Inside> {
   isHalf?: boolean
@@ -11,7 +11,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   ({ isHalf = true, error, name, placeholder = '…', type = 'text', ...rest }, ref) => {
     return (
       <FormControl className={clsx(isHalf && 'mt-1 inline-block md:w-1/2')}>
-        <FormLabel for={name} text={getLabelText(name)} />
+        <FormLabel for={name} text={formatFieldName(name)} />
         <Input.Inside
           {...rest}
           ref={ref}
