@@ -5,10 +5,11 @@ import { FormSelect } from '@/components/molecules'
 export default function CheckoutForm() {
   const { register, getFieldState } = useFormContext<ICheckoutDetailsForm>()
   const { errors } = useFormState<ICheckoutDetailsForm>({ name: 'checkoutDetails' })
+  const { invalid } = getFieldState('checkoutDetails')
 
   return (
     <section>
-      <FormSubtitle hasError={getFieldState('checkoutDetails').invalid} text='checkoutDetails' />
+      <FormSubtitle isInvalid={invalid} text='checkoutDetails' />
       <FormRow>
         <FormSelect
           error={errors.checkoutDetails?.paymentMethod}

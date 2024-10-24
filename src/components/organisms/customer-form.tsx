@@ -6,10 +6,11 @@ import { FormInput } from '@/components/molecules'
 export default function CustomerForm() {
   const { register, getFieldState } = useFormContext<ICustomerDetailsForm>()
   const { errors } = useFormState<ICustomerDetailsForm>({ name: 'customerDetails' })
+  const { invalid } = getFieldState('customerDetails')
 
   return (
     <section>
-      <FormSubtitle hasError={getFieldState('customerDetails').invalid} text='customerDetails' />
+      <FormSubtitle isInvalid={invalid} text='customerDetails' />
       <FormInput
         error={errors.customerDetails?.name}
         isHalf={false}

@@ -5,10 +5,11 @@ import { FormInput } from '@/components/molecules'
 export default function DeliveryForm() {
   const { register, getFieldState } = useFormContext<IDeliveryAddressForm>()
   const { errors } = useFormState<IDeliveryAddressForm>({ name: 'deliveryAddress' })
+  const { invalid } = getFieldState('deliveryAddress')
 
   return (
     <section>
-      <FormSubtitle hasError={getFieldState('deliveryAddress').invalid} text='deliveryAddress' />
+      <FormSubtitle isInvalid={invalid} text='deliveryAddress' />
       <FormRow>
         <FormInput
           error={errors.deliveryAddress?.state}
