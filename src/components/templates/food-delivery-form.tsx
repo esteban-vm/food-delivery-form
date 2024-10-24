@@ -4,9 +4,9 @@ import { FaHashtag } from 'react-icons/fa6'
 import { Card } from 'rsc-daisyui'
 import { FormButton, FormTitle } from '@/components/atoms'
 import { FormInput } from '@/components/molecules'
-import { CheckoutForm, CustomerForm, DeliveryForm } from '@/components/organisms'
+import { CheckoutDetailsForm, CustomerDetailsForm, DeliveryAddressForm } from '@/components/organisms'
 
-export default function Form() {
+export default function FoodDeliveryForm() {
   const methods = useForm<IFoodDeliveryForm>({
     mode: 'onChange',
     delayError: 2_000,
@@ -70,9 +70,9 @@ export default function Form() {
           })}
         />
         <FormProvider {...methods}>
-          <CustomerForm />
-          <CheckoutForm />
-          <DeliveryForm />
+          <CustomerDetailsForm />
+          <CheckoutDetailsForm />
+          <DeliveryAddressForm />
         </FormProvider>
         <FormButton control={control} />
       </Card.Body>

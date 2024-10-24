@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { Hero } from 'rsc-daisyui'
-import { Form } from '@/components'
+import { FoodDeliveryForm } from '@/components'
 import backgroundImg from '@/images/background.jpg'
 import formImg from '@/images/form.jpg'
 
@@ -15,7 +15,7 @@ export default function Home() {
           className='w-3/4 rounded-box grayscale transition-all delay-500 duration-200 hover:grayscale-0 md:w-1/3'
           src={formImg}
         />
-        <Form />
+        <FoodDeliveryForm />
       </Hero.Content>
     </Hero>
   )
