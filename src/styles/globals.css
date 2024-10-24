@@ -12,8 +12,14 @@
     @apply font-alegreya tracking-wide selection:bg-primary selection:text-neutral;
   }
 
-  input {
-    @apply placeholder:select-none;
+  form {
+    input {
+      @apply placeholder:select-none;
+    }
+
+    section {
+      @apply size-full py-2;
+    }
   }
 }
 

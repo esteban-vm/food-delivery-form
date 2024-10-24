@@ -31,6 +31,7 @@ export default function Form() {
   })
 
   const {
+    reset,
     control,
     register,
     handleSubmit,
@@ -40,6 +41,7 @@ export default function Form() {
   const onSubmit: SubmitHandler<IFoodDeliveryForm> = async (data) => {
     await new Promise((resolve) => setTimeout(resolve, 3_000))
     console.log(data)
+    reset()
   }
 
   const onError: SubmitErrorHandler<IFoodDeliveryForm> = (errors) => {
