@@ -4,16 +4,18 @@ import { twMerge } from 'tailwind-merge'
 
 const twClsx = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 const getLastKey = (str: string) => str.substring(str.lastIndexOf('.') + 1)
+const splitCamelCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1 $2')
 
 export { twClsx as clsx }
 
-export const getLabelText = (name: FieldName) => {
-  let labelText = ''
+export const formatFieldName = (name: FieldName) => {
+  let labelText: string
 
   switch (name) {
     case 'customerDetails':
     case 'checkoutDetails':
     case 'deliveryAddress':
+      labelText = splitCamelCase(name)
       break
     case 'orderNumber':
       labelText = 'Order No.'
@@ -39,5 +41,3 @@ export const getLabelText = (name: FieldName) => {
 
   return labelText
 }
-
-export const splitCamelCase = (str: string) => str.replace(/([a-z])([A-Z])/g, '$1 $2')
