@@ -2,7 +2,7 @@ import { useFormContext, useFormState } from 'react-hook-form'
 import { FormRow, FormSubtitle } from '@/components/atoms'
 import { FormSelect } from '@/components/molecules'
 
-export default function CheckoutForm() {
+export default function CheckoutDetailsForm() {
   const { register, getFieldState } = useFormContext<ICheckoutDetailsForm>()
   const { errors } = useFormState<ICheckoutDetailsForm>({ name: 'checkoutDetails' })
   const { invalid } = getFieldState('checkoutDetails')

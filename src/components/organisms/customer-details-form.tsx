@@ -3,7 +3,7 @@ import { FaEnvelope, FaPhone, FaUser } from 'react-icons/fa6'
 import { FormRow, FormSubtitle } from '@/components/atoms'
 import { FormInput } from '@/components/molecules'
 
-export default function CustomerForm() {
+export default function CustomerDetailsForm() {
   const { register, getFieldState } = useFormContext<ICustomerDetailsForm>()
   const { errors } = useFormState<ICustomerDetailsForm>({ name: 'customerDetails' })
   const { invalid } = getFieldState('customerDetails')

@@ -2,7 +2,7 @@ import { useFormContext, useFormState } from 'react-hook-form'
 import { FormRow, FormSubtitle } from '@/components/atoms'
 import { FormInput } from '@/components/molecules'
 
-export default function DeliveryForm() {
+export default function DeliveryAddressForm() {
   const { register, getFieldState } = useFormContext<IDeliveryAddressForm>()
   const { errors } = useFormState<IDeliveryAddressForm>({ name: 'deliveryAddress' })
   const { invalid } = getFieldState('deliveryAddress')
