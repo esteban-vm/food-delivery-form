@@ -18,7 +18,7 @@ export default function ButtonGroup({ control, onReset }: ButtonGroupProps) {
         <FaTruckFast />
       </FormButton>
       <FormButton disabled={isSubmitting} onClick={onReset}>
-        Reset
+        Clear Form
         <FaSprayCanSparkles />
       </FormButton>
     </FormRow>
