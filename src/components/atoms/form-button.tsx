@@ -1,27 +1,17 @@
-import type { Control } from 'react-hook-form'
-import { useFormState } from 'react-hook-form'
-import { FaTruckFast } from 'react-icons/fa6'
 import { Button, FormControl } from 'rsc-daisyui'
 
-interface FormButtonProps {
-  control: Control<IFoodDeliveryForm>
-}
+interface FormButtonProps extends Partial<BaseProps<typeof Button>> {}
 
-export default function FormButton({ control }: FormButtonProps) {
-  const { isSubmitting } = useFormState({ control })
-
+export default function FormButton({ type = 'button', ...rest }: FormButtonProps) {
   return (
-    <FormControl className='pointer-events-none mt-4'>
+    <FormControl className='pointer-events-none mt-4 inline-block text-center md:w-1/2'>
       <Button
-        className='pointer-events-auto mx-auto w-full max-w-sm font-semibold italic text-white'
+        {...rest}
+        className='pointer-events-auto w-3/4 text-base font-semibold italic text-white'
         color='primary'
-        disabled={isSubmitting}
         size='sm'
-        type='submit'
-      >
-        Order Now!
-        <FaTruckFast />
-      </Button>
+        type={type}
+      />
     </FormControl>
   )
 }
