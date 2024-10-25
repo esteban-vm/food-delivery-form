@@ -1,11 +1,19 @@
-import { useFormContext, useFormState } from 'react-hook-form'
+import { useEffect } from 'react'
+import { useFormContext, useFormState, useWatch } from 'react-hook-form'
 import { FormRow, FormSubtitle } from '@/components/atoms'
 import { FormSelect } from '@/components/molecules'
 
 export default function CheckoutDetailsForm() {
   const { register, getFieldState } = useFormContext<ICheckoutDetailsForm>()
   const { errors } = useFormState<ICheckoutDetailsForm>({ name: 'checkoutDetails' })
+  const paymentMethod = useWatch<ICheckoutDetailsForm>({ name: 'checkoutDetails.paymentMethod' })
   const { invalid } = getFieldState('checkoutDetails')
+
+  useEffect(() => {
+    if (paymentMethod === 'online') {
+      alert('Please verify the transaction')
+    }
+  }, [paymentMethod])
 
   return (
     <section>
