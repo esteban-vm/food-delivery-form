@@ -20,7 +20,7 @@ const tailwindConfig = {
     },
   },
   daisyui: {
-    themes: ['synthwave'],
+    themes: ['forest'],
   },
   plugins: [fluid, touch(), daisyui, mobileHover],
 }

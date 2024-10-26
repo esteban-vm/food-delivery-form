@@ -15,7 +15,7 @@ export default function FormLabel({ for: element, text, error }: FormLabelProps)
           {error.message}
         </Label.TextAlt>
       ) : (
-        <Label.Text className='capitalize'>{text}</Label.Text>
+        <Label.Text className='capitalize text-primary'>{text}</Label.Text>
       )}
     </Label>
   )
