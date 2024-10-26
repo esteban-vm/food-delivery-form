@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { FaXmark } from 'react-icons/fa6'
+import { FaCreditCard, FaXmark } from 'react-icons/fa6'
 import { Button, Modal } from 'rsc-daisyui'
 
 interface FormModalProps {
@@ -32,7 +32,7 @@ export default function FormModal({ isOpen, handleClose }: FormModalProps) {
   return mounted
     ? createPortal(
         <Modal ref={ref} onClose={handleClose}>
-          <Modal.Box className='max-w-lg'>
+          <Modal.Box className='max-w-lg bg-primary-content text-primary'>
             <Button
               className='absolute right-2 top-2'
               color='ghost'
@@ -43,7 +43,10 @@ export default function FormModal({ isOpen, handleClose }: FormModalProps) {
             >
               <FaXmark />
             </Button>
-            <h3 className='text-lg font-semibold'>Please verify the transaction</h3>
+            <h3 className='flex items-center text-lg font-semibold'>
+              <FaCreditCard />
+              &nbsp;<span className='italic'>Please verify the transaction</span>
+            </h3>
           </Modal.Box>
         </Modal>,
         document.getElementById('portal')!
