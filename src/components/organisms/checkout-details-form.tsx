@@ -1,9 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormContext, useFormState, useWatch } from 'react-hook-form'
 import { FormRow, FormSubtitle } from '@/components/atoms'
-import { FormSelect } from '@/components/molecules'
+import { FormModal, FormSelect } from '@/components/molecules'
 
 export default function CheckoutDetailsForm() {
+  const [showModal, setShowModal] = useState(false)
   const { register, getFieldState } = useFormContext<ICheckoutDetailsForm>()
   const { errors } = useFormState<ICheckoutDetailsForm>({ name: 'checkoutDetails' })
   const paymentMethod = useWatch<ICheckoutDetailsForm>({ name: 'checkoutDetails.paymentMethod' })
@@ -11,7 +12,7 @@ export default function CheckoutDetailsForm() {
 
   useEffect(() => {
     if (paymentMethod === 'online') {
-      alert('Please verify the transaction')
+      setShowModal(true)
     }
   }, [paymentMethod])
 
@@ -34,6 +35,7 @@ export default function CheckoutDetailsForm() {
           })}
         />
       </FormRow>
+      <FormModal handleClose={() => setShowModal(false)} isOpen={showModal} />
     </section>
   )
 }
